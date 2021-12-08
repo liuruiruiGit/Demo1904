@@ -12,5 +12,6 @@ namespace MyProject.Shopping
     {
         public Guid GoodId { get; set; }//商品id
         public Guid TypeId { get; set; }//类型id
+      
     }
 }
