@@ -1,5 +1,6 @@
 ﻿using MyProject.Dto.RbacDto;
 using MyProject.DtoInfo.CreateUpdateDto;
+
 using MyProject.IService;
 using MyProject.Rbac;
 using System;
@@ -18,9 +19,10 @@ namespace MyProject.Service
     /// </summary>
     public class MyUserService:CrudAppService<UserModel,UserModelDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateUserModel>,IMyUserService
     {
-        public MyUserService(IRepository<UserModel,Guid> repository):base(repository)
+        public MyUserService(IRepository<UserModel,Guid> repository):base(repository){}
+        public List<UserModelDto> Show()
         {
-            //
+            throw new NotImplementedException();
         }
     }
 }

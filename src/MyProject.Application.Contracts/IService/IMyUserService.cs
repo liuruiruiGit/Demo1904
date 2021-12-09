@@ -11,6 +11,6 @@ namespace MyProject.IService
 {
     public interface IMyUserService:ICrudAppService<UserModelDto, Guid, PagedAndSortedResultRequestDto,CreateUpdateUserModel>
     {
-       
+        List<UserModelDto> Show();
     }
 }
