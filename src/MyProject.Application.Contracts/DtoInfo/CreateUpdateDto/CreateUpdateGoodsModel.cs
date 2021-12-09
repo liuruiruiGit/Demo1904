@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace MyProject.DtoInfo.CreateUpdateDto
 {
-    public  class CreateUpdateGoodsModel
+    public  class CreateUpdateGoodsModel : AuditedEntityDto<Guid>
     {
         public string GoodsName { get; set; }//商品名称
         public decimal GoodPrice { get; set; }//商品价格

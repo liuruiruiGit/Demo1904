@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace MyProject.DtoInfo.CreateUpdateDto
 {
-    public class CreateUpdateUserModel
+    public class CreateUpdateUserModel:AuditedEntityDto<Guid>
     {
         public string LoginName { get; set; }//登录账号
         public string LoginPwd { get; set; }//登录密码

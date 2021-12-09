@@ -10,7 +10,7 @@ namespace MyProject.Rbac
 {
     public class RoleModel : AuditedAggregateRoot<Guid>
     {
-        public Guid FatherId { get; set; }//上级id
+        public Guid? FatherId { get; set; }//上级id
         public string RoleName { get; set; }//角色名
         public DateTime CreateTime { get; set; } = DateTime.Now;//创建时间
         public string RoleMessage { get; set; }//角色描述

@@ -11,8 +11,9 @@ namespace MyProject.Rbac
     public   class OrganizationModel : AuditedAggregateRoot<Guid>
     {
 
-        public Guid FatherId { get; set; }//上级id
+        public Guid? FatherId { get; set; }//上级id
         public string OrganizationName { get; set; }//组织名称
+        public string Url { get; set; }//路径
         public DateTime CreateDate { get; set; }//创建时间
         public string OrganizationMessage { get; set; }//组织描述
     }

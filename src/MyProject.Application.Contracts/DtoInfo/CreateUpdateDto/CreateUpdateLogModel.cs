@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace MyProject.DtoInfo.CreateUpdateDto
 {
-    public class CreateUpdateLogModel
+    public class CreateUpdateLogModel : AuditedEntityDto<Guid>
     {
         public int OpenType { get; set; }//操作类型
         public string OpenMessAge { get; set; }//操作内容

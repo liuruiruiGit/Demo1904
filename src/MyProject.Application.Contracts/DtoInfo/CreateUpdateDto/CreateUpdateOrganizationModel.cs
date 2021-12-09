@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace MyProject.DtoInfo.CreateUpdateDto
 {
-    public class CreateUpdateOrganizationModel
+    public class CreateUpdateOrganizationModel : AuditedEntityDto<Guid>
     {
         [Required]
         public Guid FatherId { get; set; }//上级id

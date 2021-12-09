@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyProject.Migrations
 {
-    public partial class Initial : Migration
+    public partial class inittabless : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -273,6 +273,86 @@ namespace MyProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GoodsImgModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImgId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GoodsImgModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GoodsModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    GoodsName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoodPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    GoodMessAge = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoodNum = table.Column<int>(type: "int", nullable: false),
+                    GoodState = table.Column<bool>(type: "bit", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GoodsModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GoodsSpecificationModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    GoodId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SpecId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GoodsSpecificationModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GoodsTypeModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    GoodId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GoodsTypeModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "IdentityServerApiResources",
                 columns: table => new
                 {
@@ -455,6 +535,299 @@ namespace MyProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityServerPersistedGrants", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImgModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImgModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IndentDetailModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    dateOfOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PayWayInfoId = table.Column<int>(type: "int", nullable: false),
+                    ur_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OrderInfoAddre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderInfoName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShoppAddreTel = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderInfoSalePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CommodCountPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderInfoBarCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderInfoPayPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderInfoActiveName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderPrivilPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderInfoActivePrice = table.Column<int>(type: "int", nullable: false),
+                    OrderInvoiceM = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderWheShipments = table.Column<int>(type: "int", nullable: false),
+                    OrderInfoAuditState = table.Column<int>(type: "int", nullable: false),
+                    OrderInfoWhetherPay = table.Column<int>(type: "int", nullable: false),
+                    OrderInfoState = table.Column<int>(type: "int", nullable: false),
+                    OrderInfoDeliveryState = table.Column<int>(type: "int", nullable: false),
+                    OrderInfoWaybillNum = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogComId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CommodEvaluaGrade = table.Column<int>(type: "int", nullable: false),
+                    CommodEvaluaTime = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CommodEvaluaOrder = table.Column<int>(type: "int", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IndentDetailModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IndentModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OrderInfoId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoodId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Num = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SmallImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IndentModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LogModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OpenType = table.Column<int>(type: "int", nullable: false),
+                    OpenMessAge = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OpenPeople = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OpenDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MenuModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FatherId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MenuName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MenuMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrganizationModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FatherId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrganizationMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrganizationModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoleMenuModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MenuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoleMenuModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoleModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FatherId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RoleMessage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoleModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SiteModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AddrName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddrFatherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DetailedAddr = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<bool>(type: "bit", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SiteModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpecificationModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SpeciColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpeciEdition = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpeciWeight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SpeciSize = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpecificationModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserImgModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImgId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserImgModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LoginName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LoginPwd = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LoginDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LoginCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRoleModels",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRoleModels", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -1272,6 +1645,18 @@ namespace MyProject.Migrations
                 name: "AbpUserTokens");
 
             migrationBuilder.DropTable(
+                name: "GoodsImgModels");
+
+            migrationBuilder.DropTable(
+                name: "GoodsModels");
+
+            migrationBuilder.DropTable(
+                name: "GoodsSpecificationModels");
+
+            migrationBuilder.DropTable(
+                name: "GoodsTypeModels");
+
+            migrationBuilder.DropTable(
                 name: "IdentityServerApiResourceClaims");
 
             migrationBuilder.DropTable(
@@ -1327,6 +1712,45 @@ namespace MyProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "IdentityServerPersistedGrants");
+
+            migrationBuilder.DropTable(
+                name: "ImgModels");
+
+            migrationBuilder.DropTable(
+                name: "IndentDetailModels");
+
+            migrationBuilder.DropTable(
+                name: "IndentModels");
+
+            migrationBuilder.DropTable(
+                name: "LogModels");
+
+            migrationBuilder.DropTable(
+                name: "MenuModels");
+
+            migrationBuilder.DropTable(
+                name: "OrganizationModels");
+
+            migrationBuilder.DropTable(
+                name: "RoleMenuModels");
+
+            migrationBuilder.DropTable(
+                name: "RoleModels");
+
+            migrationBuilder.DropTable(
+                name: "SiteModels");
+
+            migrationBuilder.DropTable(
+                name: "SpecificationModels");
+
+            migrationBuilder.DropTable(
+                name: "UserImgModels");
+
+            migrationBuilder.DropTable(
+                name: "UserModels");
+
+            migrationBuilder.DropTable(
+                name: "UserRoleModels");
 
             migrationBuilder.DropTable(
                 name: "AbpEntityChanges");

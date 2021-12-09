@@ -4,21 +4,16 @@ using MyProject.IService;
 using MyProject.Rbac;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
 namespace MyProject.Service
 {
-    /// <summary>
-    /// 服务实现
-    /// </summary>
-    public class MyUserService:CrudAppService<UserModel,UserModelDto,Guid,PagedAndSortedResultRequestDto,CreateUpdateUserModel>,IMyUserService
+    public class MyUserRoleService : CrudAppService<UserRoleModel, UserRoleModelDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateUserRoleModel>, IMyUserRoleService
     {
-        public MyUserService(IRepository<UserModel,Guid> repository):base(repository)
+        public MyUserRoleService(IRepository<UserRoleModel, Guid> repository) : base(repository)
         {
             //
         }

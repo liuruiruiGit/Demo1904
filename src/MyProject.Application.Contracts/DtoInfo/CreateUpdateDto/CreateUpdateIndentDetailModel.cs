@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace MyProject.DtoInfo.CreateUpdateDto
 {
-    public class CreateUpdateIndentDetailModel
+    public class CreateUpdateIndentDetailModel : AuditedEntityDto<Guid>
     {
         public DateTime dateOfOrder { get; set; }//下单日期
         public int PayWayInfoId { get; set; }//支付方式

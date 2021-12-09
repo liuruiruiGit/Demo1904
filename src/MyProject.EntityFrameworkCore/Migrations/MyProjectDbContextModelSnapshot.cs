@@ -44,7 +44,7 @@ namespace MyProject.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
-                    b.Property<Guid>("FatherId")
+                    b.Property<Guid?>("FatherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -92,7 +92,7 @@ namespace MyProject.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
-                    b.Property<Guid>("FatherId")
+                    b.Property<Guid?>("FatherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -107,6 +107,9 @@ namespace MyProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrganizationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -182,7 +185,7 @@ namespace MyProject.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
-                    b.Property<Guid>("FatherId")
+                    b.Property<Guid?>("FatherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModificationTime")

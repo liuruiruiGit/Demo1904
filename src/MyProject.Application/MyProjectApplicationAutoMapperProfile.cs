@@ -26,7 +26,7 @@ namespace MyProject
             CreateMap<RoleModel,RoleModelDto>();
             CreateMap<CreateUpdateRoleModel,RoleModel>();
 
-            CreateMap<UserModel, UserModelDto>();
+            CreateMap<UserModel,UserModelDto>();
             CreateMap<CreateUpdateUserModel, UserModel>();
 
 
