@@ -10,5 +10,6 @@ namespace MyProject.IService
 {
     public interface IMyGoodsImgService : ICrudAppService<GoodsImgModelDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateGoodsImgModel>
     {
+
     }
 }

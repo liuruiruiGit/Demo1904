@@ -30,18 +30,14 @@ namespace MyProject.DbMigrator
             }))
             {
                 application.Initialize();
-
                 await application
                     .ServiceProvider
                     .GetRequiredService<MyProjectDbMigrationService>()
                     .MigrateAsync();
-
                 application.Shutdown();
-
                 _hostApplicationLifetime.StopApplication();
             }
         }
-
         public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
     }
 }
