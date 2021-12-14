@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
-
 namespace MyProject.IService
 {
-    public interface IMyUserService:ICrudAppService<UserModelDto, Guid, PagedAndSortedResultRequestDto,CreateUpdateUserModel>
+    public interface IIds4Services
     {
-        Task<int> AddUser(CreateUpdateUserModel model);
-        Task<LiveShopResData<string>> GetLogin(string userName, string userPwd);
+        Task<string> GetIdsTokenAsync(string userName, string userPwd);
     }
 }

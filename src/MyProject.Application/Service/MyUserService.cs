@@ -37,30 +37,17 @@ namespace MyProject.Service
             await user.InsertAsync(a);
             return 1;
         }
-        //前端后台管理员登录
-        public async Task<string> Login(UserModelDto model)
+         //token
+        public async Task<LiveShopResData<string>> GetLogin(string userName, string userPwd)
         {
-            
-            var client = new HttpClient();
-            var idsTokenUrl = _configuration.GetSection("AuthServer:Authority").Value;
-            var AppClientId = _configuration.GetSection("AuthServer:AuthoritId").Value;
-            var AppClientSecret = _configuration.GetSection("AuthServer:AppClientSecret").Value;
-            var disco = client.GetDiscoveryDocumentAsync(idsTokenUrl);
-            var tokenRequest = await client.RequestPasswordTokenAsync(
-                new PasswordTokenRequest {
-                    Address=disco.Result.TokenEndpoint,
-                    ClientId=AppClientId,
-                    ClientSecret=AppClientSecret,
-                    UserName=model.LoginName,
-                    Password=model.LoginPwd
-                });
-            if (tokenRequest.IsError)
-            {
-                return string.Empty;
-            }
-            return tokenRequest.AccessToken;
+            Ids4 ids4Service = new Ids4(_configuration);
+            string token = await ids4Service.GetIdsTokenAsync(userName, userPwd);
+            return new LiveShopResData<string>() { Status = ShopStatus.Succeed, Msg = "获取token成功", Info = token };
         }
-       
+
+     
+
+
 
     }
 }
