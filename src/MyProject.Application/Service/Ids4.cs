@@ -22,11 +22,10 @@ namespace MyProject.Service
         {
             var client = new HttpClient();
             var idsTokenUrl = _configuration.GetSection("AuthServer:Authority").Value;  //ids4访问url地址
-            var AppClientId = _configuration.GetSection("AuthServer:AuthoritId").Value;  //ids4访问
+            var AppClientId = _configuration.GetSection("AuthServer:AuthoritId").Value; //ids4访问
             var AppClientSecret = _configuration.GetSection("AuthServer:AuthoritSecret").Value;  //ids4访问密码
             //var AppClientSecret = this._configuration.CetSection("AuthServer: AppClientSecret").value;//ids4访
             var disco = client.GetDiscoveryDocumentAsync(idsTokenUrl);
-
             var tokenResponse = await client.RequestPasswordTokenAsync(
                 new PasswordTokenRequest
                 {
@@ -35,9 +34,7 @@ namespace MyProject.Service
                     ClientSecret = AppClientSecret,
                     UserName = loginName,
                     Password = Loginpwd
-                }
-                );
-
+                });
             if (tokenResponse.IsError)
             {
                 return string.Empty;
