@@ -22,7 +22,7 @@ namespace MyProject.Service
     {
         private readonly IRepository<IndentDetailModel, Guid> _indentDetailModels;
         private readonly IHttpContextAccessor _contextAccessor;
-        public MyPayment(IHttpContextAccessor contextAccessor, IRepository<IndentDetailModel,Guid>  indentDetailModels)
+        public MyPayment(IHttpContextAccessor contextAccessor,IRepository<IndentDetailModel,Guid>  indentDetailModels)
         {
             _indentDetailModels = indentDetailModels;
             _contextAccessor = contextAccessor;
@@ -33,6 +33,9 @@ namespace MyProject.Service
             #region 
             var config = new Config()
             {
+
+
+
                 Protocol = "https",
                 //"openapi.alipay.com",沙箱
                 GatewayHost = "openapi.alipay.com",
