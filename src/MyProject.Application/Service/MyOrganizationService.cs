@@ -13,9 +13,9 @@ namespace MyProject.Service
 {
     public class MyOrganizationService:CrudAppService<OrganizationModel, OrganizationModelDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateOrganizationModel>,IMyOrganizationService
     {
-        public MyOrganizationService(IRepository<OrganizationModel, Guid> repository):base(repository)
+        public MyOrganizationService(IRepository<OrganizationModel, Guid> repository) :base(repository)
         {
-            //
+
         }
     }
 }

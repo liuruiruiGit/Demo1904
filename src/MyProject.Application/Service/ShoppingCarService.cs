@@ -84,7 +84,7 @@ namespace MyProject.Service
                 var g = ss.Where(x => x.UserId == model.UserId).FirstOrDefault();
                 if (g==null)
                 {
-                    list.Add(model);
+                    ss.Add(model);
                 }
                 else
                 {
