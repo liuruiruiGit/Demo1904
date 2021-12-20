@@ -28,20 +28,7 @@ namespace MyProject.Service
             _host = host;
         }
 
-       [HttpPost,Route("upload")]
-        public  string FileUplode(IFormFile file)
-        {
-            string Rootdir = AppContext.BaseDirectory.Split(@"\bin\")[0];
-            string FileName = DateTime.Now.ToString("yyyyMMddHHmmssffff") + System.IO.Path.GetExtension(file.FileName);
-            var Path = Rootdir + @"\Upload\" + FileName;
-            using (System.IO.FileStream fs = System.IO.File.Create(Path))
-            {
-                file.CopyTo(fs);
-                fs.Flush();//清空文件流
-            }
-            var url = "https://localhost:44335/" + Path;
-            return url;
-        }
+      
 
     }
 }

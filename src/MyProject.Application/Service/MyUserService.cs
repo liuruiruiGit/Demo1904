@@ -41,13 +41,14 @@ namespace MyProject.Service
             var a = ObjectMapper.Map<CreateUpdateUserModel,UserModel>(model);
             await user.InsertAsync(a);
             return 1;
+
         }
          //ids4 token获取
         public async Task<LiveShopResData<string>> GetLogin(string userName, string userPwd)
         {
             Ids4 ids4Service = new Ids4(_configuration);
             string token = await ids4Service.GetIdsTokenAsync(userName, userPwd);
-            return new LiveShopResData<string>() { Status = ShopStatus.Succeed, Msg = "获取token成功", Info = token };
+            return new LiveShopResData<string>() { Status = ShopStatus.Succeed,Msg = "获取token成功",Info=token };
         }
         //登录
         [HttpPost]
@@ -62,7 +63,7 @@ namespace MyProject.Service
             }
             else
             {
-                return flag = 0;
+              return flag = 0;
             }
         }
     }

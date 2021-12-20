@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyProject.Dto;
+using MyProject.Dto.RbacDto;
+using MyProject.DtoInfo.CreateUpdateDto;
+using MyProject.Rbac;
 using MyProject.Shopping;
 using Newtonsoft.Json;
 using System;
@@ -6,18 +10,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 
 namespace MyProject.Service
 {
     /// <summary>
     /// 购物车
     /// </summary>
-     public class ShoppingCarService
+     public class ShoppingCarService 
     {
         List<GoodsModel> good;
         List<GoodsImgModel> goodimg;
         List<ImgModel> img;
-        public ShoppingCarService(List<GoodsModel> _good, List<ImgModel> _img, List<GoodsImgModel> _goodimg) 
+        public ShoppingCarService(List<GoodsModel> _good, List<ImgModel> _img, List<GoodsImgModel> _goodimg)
         {
             good = _good;
             goodimg = _goodimg;
@@ -29,8 +35,8 @@ namespace MyProject.Service
         CSRedis.CSRedisClient client = new CSRedis.CSRedisClient("127.0.0.1:6379");
 
         //购物车显示
-        [HttpGet]
-        public List<string> CarShow(string userid) 
+        [HttpGet,Route("CarShow")]
+        public Task<List<string>> CarShow(string userid) 
         {
             List<CarModel> list = new List<CarModel>();
             //redis键
@@ -66,46 +72,7 @@ namespace MyProject.Service
                      }).ToList();
             return null;
         }
-
-        //加入购物车
-        public int CarAdd(CarModel model) 
-        {
-            var flag = 0;
-            var list =new List<CarModel>();
-
-            //redis键
-            var key = $"user{model.UserId}";
-            //redis值
-            var _list = client.Get(key);
-
-            if (_list!=null)
-            {
-                var ss = JsonConvert.DeserializeObject<List<CarModel>>(_list);
-                var g = ss.Where(x => x.UserId == model.UserId).FirstOrDefault();
-                if (g==null)
-                {
-                    ss.Add(model);
-                }
-                else
-                {
-                    g.Number += 1;
-                }
-                client.Set(key,ss);
-                flag = 1;
-            }
-            else
-            {
-                list.Add(model);
-                client.Set(key,list);
-                flag = 1;
-            }
-            return flag;
-        }
+    
     }
-    public class CarModel 
-    {
-        public Guid UserId { get; set; }
-        public Guid GoodId { get; set; }
-        public int Number { get; set; }
-    }
+   
 }

@@ -15,6 +15,7 @@ namespace MyProject.Reptile
     { 
         //写死的Url前台传
         public string _Url = "https://search.bilibili.com/all?keyword=.net%20core%20%E7%88%AC%E8%99%AB&from_source=webtop_search&spm_id_from=333.851";
+
         [HttpGet, Route("text/GetUrl")]
         public List<GoodsModel> GetUrl()
         {
